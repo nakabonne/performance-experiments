@@ -1,18 +1,13 @@
 package main
 
-import "sync"
-
-type T struct{}
+type Value struct{}
 
 // Slice
 type Slice struct {
-	s  []*T
-	mu sync.Mutex
+	s []*Value
 }
 
-func (s *Slice) Append(t *T) {
-	s.mu.Lock()
-	defer s.mu.Unlock()
+func (s *Slice) Append(t *Value) {
 	s.s = append(s.s, t)
 }
 
@@ -20,23 +15,16 @@ func (s *Slice) Append(t *T) {
 type LinkedList struct {
 	head *Node
 	tail *Node
-	mu   sync.RWMutex
 }
 
 type Node struct {
-	val  *T
+	val  *Value
 	next *Node
 	prev *Node
-	mu   sync.RWMutex
 }
 
-func (l *LinkedList) Append(point *T) {
-	l.mu.Lock()
-	defer l.mu.Unlock()
-
-	newNode := &Node{
-		val: point,
-	}
+func (l *LinkedList) Append(v *Value) {
+	newNode := &Node{val: v}
 	if l.tail == nil {
 		l.head = newNode
 		l.tail = newNode
