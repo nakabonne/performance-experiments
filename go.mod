@@ -1,3 +1,3 @@
-module github.com/nakabonne/performance-experiments
+module github.com/nakabonne/slice-vs-linked-list
 
 go 1.16
