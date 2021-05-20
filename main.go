@@ -1,6 +1,20 @@
-package slice_linkedlist
+package main
 
 import "sync"
+
+type T struct{}
+
+// Slice
+type Slice struct {
+	s  []*T
+	mu sync.Mutex
+}
+
+func (s *Slice) Append(t *T) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	s.s = append(s.s, t)
+}
 
 type LikedList struct {
 	head *Node
@@ -23,7 +37,6 @@ func (l *LikedList) Append(point *T) {
 		val: point,
 	}
 	if l.tail == nil {
-		// First insertion
 		l.head = newNode
 		l.tail = newNode
 		return
@@ -31,4 +44,7 @@ func (l *LikedList) Append(point *T) {
 	newNode.prev = l.tail
 	l.tail.next = newNode
 	l.tail = newNode
+}
+
+func main() {
 }

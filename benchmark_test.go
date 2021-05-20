@@ -1,10 +1,9 @@
-package slice_linkedlist
+package main
 
 import "testing"
 
 func BenchmarkSliceAppend(b *testing.B) {
 	s := &Slice{s: []*T{}}
-	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		s.Append(&T{})
 	}
@@ -12,7 +11,6 @@ func BenchmarkSliceAppend(b *testing.B) {
 
 func BenchmarkLinkedListAppend(b *testing.B) {
 	list := &LikedList{}
-	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		list.Append(&T{})
 	}

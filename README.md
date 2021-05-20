@@ -1,8 +1,6 @@
 # performance-experiments
 
 ```
-❯ cd slice_linkedlist
-
 ❯ go test -benchtime=4s -benchmem -bench=. -cpuprofile=./cpu.out -memprofile=./mem.out .
 goos: darwin
 goarch: amd64
