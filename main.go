@@ -16,7 +16,8 @@ func (s *Slice) Append(t *T) {
 	s.s = append(s.s, t)
 }
 
-type LikedList struct {
+// LinkedList
+type LinkedList struct {
 	head *Node
 	tail *Node
 	mu   sync.RWMutex
@@ -29,7 +30,7 @@ type Node struct {
 	mu   sync.RWMutex
 }
 
-func (l *LikedList) Append(point *T) {
+func (l *LinkedList) Append(point *T) {
 	l.mu.Lock()
 	defer l.mu.Unlock()
 

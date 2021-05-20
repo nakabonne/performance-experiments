@@ -10,7 +10,7 @@ func BenchmarkSliceAppend(b *testing.B) {
 }
 
 func BenchmarkLinkedListAppend(b *testing.B) {
-	list := &LikedList{}
+	list := &LinkedList{}
 	for i := 0; i < b.N; i++ {
 		list.Append(&T{})
 	}
